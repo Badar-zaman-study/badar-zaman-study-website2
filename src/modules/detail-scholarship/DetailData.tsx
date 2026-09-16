@@ -61,20 +61,21 @@ const DetailData = ({scholarship}:any) => {
 
      
 
-     {scholarship?.youtube_video && (
-  <div className="my-3 w-full overflow-hidden rounded-xl">
-    <div className="relative aspect-video w-full">
-      <iframe
-        src={getYoutubeEmbedUrl(scholarship.youtube_video)}
-        title="YouTube video"
-        className="absolute inset-0 h-full w-full"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen 
-      />
+    {scholarship?.youtube_video &&
+  getYoutubeEmbedUrl(scholarship.youtube_video) && (
+    <div className="my-3 w-full overflow-hidden rounded-xl">
+      <div className="relative aspect-video w-full">
+        <iframe
+          src={getYoutubeEmbedUrl(scholarship.youtube_video) || undefined}
+          title="YouTube video"
+          className="absolute inset-0 h-full w-full"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen 
+        />
+      </div>
     </div>
-  </div>
-)}
+  )}
 
     </div>
   );

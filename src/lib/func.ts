@@ -21,7 +21,7 @@ export const getScholarshipStatus = (admissionOpen: string,deadline: string ) =>
 }
 
 
-export const getYoutubeEmbedUrl = (url: string) => {
+export const getYoutubeEmbedUrl = (url: string): string | undefined => {
   try {
     const parsedUrl = new URL(url);
 
@@ -38,11 +38,11 @@ export const getYoutubeEmbedUrl = (url: string) => {
     }
 
     if (!videoId) {
-      return null;
+      return undefined;
     }
 
     return `https://www.youtube.com/embed/${videoId}`;
   } catch {
-    return null;
+    return undefined;
   }
 };
