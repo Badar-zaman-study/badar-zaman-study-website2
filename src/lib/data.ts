@@ -27,7 +27,7 @@ import type {
   Feature,
   GuideStep,
   NavItem,
-  Scholarship,
+  Scholarship, 
   Testimonial
 } from "@/src/lib/types";
 
