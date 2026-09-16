@@ -8,7 +8,7 @@ import { Navbar } from "@/src/components/layout/navbar";
 import { SiteSidebar } from "@/src/components/layout/site-sidebar";
 
 export const metadata: Metadata = {
-  title: "Dr Rizwan",
+  title: "Badar Study Abroad",
   // description: "Premium study abroad counselling, scholarships, admissions strategy, and visa support for ambitious students."
 };
 
