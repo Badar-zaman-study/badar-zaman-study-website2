@@ -32,7 +32,7 @@ import type {
 } from "@/src/lib/types";
 
 export const navItems: NavItem[] = [
-  { label: "Home", href: "/" },
+  { label: "Home", href: "/home" },
   { label: "Scholarships", href: "/scholarships" },
   { label: "Required Documents", href: "/required-documents" },
   // { label: "Study Abroad Guide", href: "/study-abroad-guide" },
