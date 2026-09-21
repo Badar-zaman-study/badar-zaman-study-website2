@@ -22,9 +22,19 @@ import {
   type ApplicationFormValues,
 } from "@/src/lib/validations/application-form";
 import Loader from "@/src/components/Loader";
+import { createClient } from "@/src/utils/supabase/client";
+
+
+
 const ContactForm = () => {
 
    const [submitted, setSubmitted] = useState(false);
+   const [mobileNumbers , setMobileNumbers] = useState({
+       bachelors_mobile_number:'',
+       masters_mobile_number:'',
+       phd_mobile_number:''
+     })
+   const supabase = createClient();
   
     const {
       register,
@@ -47,20 +57,60 @@ const ContactForm = () => {
         typeYourQuestions: "",
       },
     });
+
+     const interestedDegree = watch("interestedDegree");
+
+
+
+    const getMobileNumbers = async ()=>{
+     try {
+    const { data, error } = await supabase
+      .from("setting")
+      .select(
+        "BS_WhatsappNumber, MS_WhatsappNumber, PHD_WhatsappNumber"
+      )
+      .eq("singleton_key", true)
+      .maybeSingle();
+
+    if (error) {
+      console.error("Get setting error:", error);
+      return
+    }
+
+   if (!data) {
+      console.log("Mobile numbers not found");
+      return;
+    }
+
+    setMobileNumbers({
+      bachelors_mobile_number:
+        data.BS_WhatsappNumber || "",
+
+      masters_mobile_number:
+        data.MS_WhatsappNumber || "",
+
+      phd_mobile_number:
+        data.PHD_WhatsappNumber || "",
+    });
+   } catch (error) {
+    console.error(
+      "Failed to fetch mobile numbers:",
+      error
+    );
+  }
+     };
   
-    const interestedDegree = watch("interestedDegree");
-    const bachelors_mobile_number=process.env.NEXT_PUBLIC_BS_WHATSAPP_NUMBER;
-    const masters_mobile_number=process.env.NEXT_PUBLIC_MS_WHATSAPP_NUMBER;
-    const phd_mobile_number=process.env.NEXT_PUBLIC_PHD_WHATSAPP_NUMBER;
   
-    // useEffect(() => {
-    //   if (isOpen) {
-    //     setSubmitted(false);
-    //     reset();
-    //   }
-    // }, [isOpen, reset]);
+    useEffect(() => {
+     getMobileNumbers()
+    }, []);
   
     const onSubmit = async (data: ApplicationFormValues) => {
+
+    if(!mobileNumbers){
+       await getMobileNumbers()
+    } 
+
       console.log(data,'data_submit_scholarship')
     const message = `
     New Scholarship Application
@@ -75,9 +125,9 @@ const ContactForm = () => {
   
     // Degree ke according WhatsApp number
     const whatsappNumbers:any = {
-      bachelors: bachelors_mobile_number,
-      masters: masters_mobile_number,
-      phd: phd_mobile_number,
+      bachelors: mobileNumbers?.bachelors_mobile_number,
+      masters: mobileNumbers?.masters_mobile_number,
+      phd: mobileNumbers?.phd_mobile_number,
     };
   
     const degree = data.interestedDegree.toLowerCase();
