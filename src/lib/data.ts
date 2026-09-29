@@ -42,10 +42,10 @@ export const navItems: NavItem[] = [
 ];
 
 export const stats = [
-  { icon: Globe2, value: 12,  suffix: "K", label: "Students guided globally" },
-  { icon: Building2, value: 420,  suffix: "+", label: "Partner universities" },
+  { icon: Globe2, value: 150,  suffix: "K", label: "Students guided globally" },
+  { icon: Building2, value: 50,  suffix: "+", label: "Partner universities" },
   { icon: ShieldCheck, value: 96, suffix: "%", label: "Visa success support rate" },
-  { icon: Award, value: 18, suffix: "M", label: "Scholarships unlocked" }
+  { icon: Award, value: 150, suffix: "", label: "Scholarships unlocked" }
 ];
 
 export const destinations: Destination[] = [
@@ -96,7 +96,15 @@ export const destinations: Destination[] = [
     description: "Tech-driven economy with globally connected universities and welcoming culture.",
     universities: "35+ universities",
     highlight: "Gateway to European careers"
-  }
+  },
+ {
+  slug: "saudi-arabia",
+  name: "Saudi Arabia",
+  image: "https://images.unsplash.com/photo-1694018359679-49465b4c0d61?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  description: "Rapidly growing economy with modern universities, diverse career opportunities, and a rich cultural heritage.",
+  universities: "30+ universities",
+  highlight: "Gateway to Middle Eastern careers"
+}
 ];
 
 export const features: Feature[] = [

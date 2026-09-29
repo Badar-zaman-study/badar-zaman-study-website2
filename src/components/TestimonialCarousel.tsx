@@ -12,37 +12,37 @@ type Testimonial = {
 
 const testimonials: Testimonial[] = [
   {
-    name: "Ayesha Khan",
-    country: "Germany",
-    image: "https://i.pravatar.cc/150?img=47",
-    review:
-      "Thanks to Badder Zaman Consultancy, I got DAAD scholarship. Their guidance was excellent!",
-  },
-  {
     name: "Muhammad Ali",
     country: "Australia",
-    image: "https://i.pravatar.cc/150?img=12",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0xHKnAsbFJf6pmfn2Ox5ZyNF8oiaP7w7bEtxkKalHHVn1sidWy2HPZREF&s=10",
     review:
       "I received my visa within 3 weeks! Highly professional team and great support throughout.",
   },
   {
+    name: "Ayesha Khan",
+    country: "Germany",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3B_eaVJaTOxvoO9G6OFyURF_JYatgbgzx1Cpphrg6M1awqE35SFSTvB2r&s=10",
+    review:
+      "Thanks to Badder Zaman Consultancy, I got DAAD scholarship. Their guidance was excellent!",
+  },
+  {
     name: "Fatima Noor",
     country: "Canada",
-    image: "https://i.pravatar.cc/150?img=44",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRIc9Gv8byvnN347IIq7ztFF9TxjXOZ0M6bHWa08dQ4w&s=10",
     review:
       "They helped me secure fully funded scholarship in Canada. Highly recommended!",
   },
   {
     name: "Hassan Ahmed",
     country: "UK",
-    image: "https://i.pravatar.cc/150?img=11",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2G00e44yKcfBV-Ij4ztY7OTkouPkZ61jVZ9B7IsR_Pw&s=10",
     review:
       "The team guided me throughout the complete application process. Everything was very smooth.",
   },
   {
     name: "Sara Malik",
     country: "Italy",
-    image: "https://i.pravatar.cc/150?img=32",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5cT-cArL4lIJKSacEfGASsEnyuQjTc7jhsQ2U7QNTBw&s=10",
     review:
       "Amazing support from start to finish. I would definitely recommend their consultancy.",
   },
@@ -100,7 +100,7 @@ export function TestimonialCarousel() {
         <img
           src={testimonial.image}
           alt={testimonial.name}
-          className="h-12 w-12 rounded-full object-cover"
+          className="!h-13 w-13 rounded-full object-cover"
         />
 
         <div>

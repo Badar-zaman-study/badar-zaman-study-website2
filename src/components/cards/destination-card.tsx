@@ -24,9 +24,9 @@ export function DestinationCard({ destination }: { destination: Destination }) {
           </div>
         </div>
         <p className="mt-4 text-sm leading-7 text-black/80">{destination.description}</p>
-        <Link href="/study-abroad-guide" className="mt-5 inline-flex items-center gap-2 font-semibold !text-black">
+        {/* <Link href="/study-abroad-guide" className="mt-5 inline-flex items-center gap-2 font-semibold !text-black">
           View Details <ArrowUpRight size={17} />
-        </Link>
+        </Link> */}
       </div>
     </article>
   );

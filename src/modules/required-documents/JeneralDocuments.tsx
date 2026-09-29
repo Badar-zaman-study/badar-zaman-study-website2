@@ -24,12 +24,12 @@ const documents = [
       "Copy of your national identity card or any official ID.",
     icon: Contact,
   },
-  {
-    title: "Bank Statement",
-    description:
-      "Recent bank statement as proof of financial stability (if required).",
-    icon: Landmark,
-  },
+  // {
+  //   title: "Bank Statement",
+  //   description:
+  //     "Recent bank statement as proof of financial stability (if required).",
+  //   icon: Landmark,
+  // },
   {
     title: "Medical Certificate",
     description:
@@ -52,7 +52,7 @@ const JeneralDocuments = () => {
         title="General Documents (Almost Always Required)"
       />
 
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-3">
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 xl:gap-3">
         {documents.map(({ title, description, icon: Icon }, index) => (
          <CardItem
            key={title}

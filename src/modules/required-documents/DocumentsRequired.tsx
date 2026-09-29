@@ -2,6 +2,7 @@ import Link from "next/link";
 import {
   ArrowUpRight,
   Award,
+  BookOpen,
   BookOpenCheck,
   BriefcaseBusiness,
   ClipboardSignature,
@@ -47,17 +48,17 @@ const documents = [
     icon: IdCard,
   },
   {
-    title: "Language Proficiency Certificate",
+    title: "Language Proficiency Certificate / MOI",
     description:
       "IELTS, TOEFL or any other required language test score.",
     icon: FileBadge,
   },
-  {
-    title: "Motivation Letter",
-    description:
-      "A letter that reflects your interest in the program and how it fits your goals.",
-    icon: NotebookPen,
-  },
+{
+  title: "Publications (if required)",
+  description:
+    "Published research papers, journal articles, or conference papers relevant to your academic field, if required by the program.",
+  icon: BookOpen,
+},
   {
     title: "Research Proposal (if required)",
     description:

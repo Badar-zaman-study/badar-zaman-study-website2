@@ -1,9 +1,13 @@
 import {
   BadgeDollarSign,
+  FilePenLine,
   FileText,
+  FileUser,
+  FlaskConical,
   GraduationCap,
   Headphones,
   Plane,
+  Send,
   ShieldCheck,
 } from "lucide-react";
 import Heading from "@/src/components/Heading";
@@ -18,27 +22,27 @@ const rows = [
   [
     FileText,
     "Application Support",
-    "15,000",
-  ],
-  [
-    ShieldCheck,
-    "Visa Assistance",
-    "20,000",
-  ],
-  [
-    FileText,
-    "Scholarship Application Support",
     "10,000",
   ],
   [
-    Plane,
-    "Pre Departure Briefing",
-    "5,000",
+    FlaskConical,
+    "Research Proposal",
+    "10,000",
   ],
   [
-    Headphones,
-    "Post Arrival Support",
-    "5,000",
+    Send,
+    "University Apply",
+    "10,000",
+  ],
+  [
+    FilePenLine,
+    "Motivational Latter",
+    "2,000",
+  ],
+  [
+    FileUser,
+    "Curriculum Vitae (CV)",
+    "2,000",
   ],
 ] as const;
 
@@ -67,7 +71,7 @@ export function ChargesTable() {
         <FadeIn key={service} delay={index * 0.12}>
           <div
             key={service}
-            className="grid grid-cols-[1fr_140px] items-center border-b border-slate-100 px-2 sm:px-5 py-2 text-sm"
+            className="grid grid-cols-[55%_45%] items-center border-b border-slate-100 px-2 sm:px-5 py-2 text-sm"
           >
             <span className="flex items-center gap-1 sm:gap-3 text-slate-600 text-xs sm:text-lg">
               <Icon
