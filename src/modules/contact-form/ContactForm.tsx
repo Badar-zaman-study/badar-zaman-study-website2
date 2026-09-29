@@ -48,9 +48,10 @@ const ContactForm = () => {
       reset,
       setValue,
       watch,
-      formState: { errors , isSubmitting },
+      formState: { errors , isSubmitting , isValid},
     } = useForm<ApplicationFormValues>({
       resolver: zodResolver(applicationFormSchema),
+      mode: "onChange",
   
       defaultValues: {
         fullName: "",
@@ -389,8 +390,8 @@ const yourWhatsAppNumber = whatsappNumbers[whatsappKey];
                   <div className="flex flex-wrap items-center gap-3 md:col-span-2">
                     <button
                       type="submit"
-                      disabled={isSubmitting}
-                      className="btn-green disabled:cursor-not-allowed disabled:opacity-60 flex items-center justify-center gap-1"
+                      disabled={!isValid || isSubmitting}
+                      className="btn-green disabled:cursor-not-allowed disabled:opacity-50 flex items-center justify-center gap-1"
                     >
                       Message on WhatsApp 
                       <span className="-ml-1"><FaWhatsapp size={20}/></span>
