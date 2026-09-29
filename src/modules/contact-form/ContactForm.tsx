@@ -281,7 +281,7 @@ const yourWhatsAppNumber = whatsappNumbers[whatsappKey];
                    {/* Interesting Subject */}
                   <div>
                     <p className="mb-2 pl-2">
-                      Interested Subject
+                      Interested Subject & Country
                       <span className="text-red-500">*</span>
                     </p>
 
