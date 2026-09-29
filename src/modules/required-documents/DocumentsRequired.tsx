@@ -85,7 +85,7 @@ const DocumentsRequired = () => {
 
         <Card className="">
        <div className="grid divide-y divide-slate-100 sm:grid-cols-2 md:divide-x md:divide-y-0 xl:grid-cols-3">
-        {documents.map(({ title, description, icon: Icon }, index) => (
+        {documents?.map(({ title, description, icon: Icon }, index) => (
          <FadeIn key={title} delay={index * 0.12}>
           <article className="flex items-start gap-3.5 px-5 py-7 sm:px-8 sm:py-8">
            <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center text-blue-700">

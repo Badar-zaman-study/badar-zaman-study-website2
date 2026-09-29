@@ -3,7 +3,7 @@ import { Clock3, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Send, Youtu
 const details = [
   { icon: Phone, title: "Phone", content: <>+92 300 1234567<br />+92 321 7654321</> },
   { icon: Mail, title: "Email", content: <>info@bzsconsultancy.com<br />admissions@bzsconsultancy.com</> },
-  { icon: MapPin, title: "Office Address", content: <>123, Main Boulevard, Johar Town,<br />Lahore, Pakistan</> },
+  { icon: MapPin, title: "Office Address", content: <>{process.env.NEXT_PUBLIC_CONTACT_US_ADDRESS}</> },
   { icon: Clock3, title: "Office Hours", content: <>Monday - Saturday<br />10:00 AM - 06:00 PM<br /><span className="text-blue-700">Sunday: Closed</span></> },
 ];
 
