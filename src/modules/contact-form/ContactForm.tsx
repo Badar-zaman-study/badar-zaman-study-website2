@@ -240,8 +240,8 @@ const yourWhatsAppNumber = whatsappNumbers[whatsappKey];
                       }
                       placeholder="gender"
                       options={[
-                        "male",
-                        "female",
+                        "Male",
+                        "Female",
                       ]}
                     />
 
