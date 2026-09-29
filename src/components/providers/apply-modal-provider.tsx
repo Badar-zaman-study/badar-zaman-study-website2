@@ -87,7 +87,7 @@ function ApplyModal({
     const { data, error } = await supabase
       .from("setting")
       .select(
-        "BS_WhatsappNumber, MS_WhatsappNumber, PHD_WhatsappNumber"
+        "*"
       )
       .eq("singleton_key", true)
       .maybeSingle();

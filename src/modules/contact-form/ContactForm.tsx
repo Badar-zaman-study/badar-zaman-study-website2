@@ -30,9 +30,15 @@ const ContactForm = () => {
 
    const [submitted, setSubmitted] = useState(false);
    const [mobileNumbers , setMobileNumbers] = useState({
-       bachelors_mobile_number:'',
-       masters_mobile_number:'',
-       phd_mobile_number:''
+       BS_Number_Male:'',
+       BS_Number_Female:'',
+
+       MS_Number_Male:'',
+       MS_Number_Female:'',
+
+       PHD_Number_Male:'',
+       PHD_Number_Female:'',
+
      })
    const supabase = createClient();
   
@@ -48,6 +54,7 @@ const ContactForm = () => {
   
       defaultValues: {
         fullName: "",
+        gender: "",
         // email: "",
         // whatsappNumber: "",
         PreviousEducation: "",
@@ -59,6 +66,7 @@ const ContactForm = () => {
     });
 
      const interestedDegree = watch("interestedDegree");
+     const gender = watch("gender");
 
 
 
@@ -67,7 +75,7 @@ const ContactForm = () => {
     const { data, error } = await supabase
       .from("setting")
       .select(
-        "BS_WhatsappNumber, MS_WhatsappNumber, PHD_WhatsappNumber"
+        "*"
       )
       .eq("singleton_key", true)
       .maybeSingle();
@@ -82,15 +90,18 @@ const ContactForm = () => {
       return;
     }
 
+    console.log(data,'data_getMobileNumbers_data_getMobileNumbers')
+
+
     setMobileNumbers({
-      bachelors_mobile_number:
-        data.BS_WhatsappNumber || "",
+      BS_Number_Male:data?.BS_Number_Male || "",
+      BS_Number_Female:data?.BS_Number_Female || "",
 
-      masters_mobile_number:
-        data.MS_WhatsappNumber || "",
+      MS_Number_Male:data?.MS_Number_Male || "",
+      MS_Number_Female:data?.MS_Number_Female || "",
 
-      phd_mobile_number:
-        data.PHD_WhatsappNumber || "",
+      PHD_Number_Male:data?.PHD_Number_Male || "",
+      PHD_Number_Female:data?.PHD_Number_Female || "",
     });
    } catch (error) {
     console.error(
@@ -116,6 +127,7 @@ const ContactForm = () => {
     New Scholarship Application
   
   Full Name: ${data.fullName}
+  Gender: ${data.gender}
   Previous Education: ${data.PreviousEducation}
   Interesting Subject: ${data.interestingSubject}
   Previous GPA/Marks: ${data.previousGPA_marks}
@@ -123,17 +135,24 @@ const ContactForm = () => {
   Questions:${data.typeYourQuestions || "N/A"}`.trim();
   
   
-    // Degree ke according WhatsApp number
-    const whatsappNumbers:any = {
-      bachelors: mobileNumbers?.bachelors_mobile_number,
-      masters: mobileNumbers?.masters_mobile_number,
-      phd: mobileNumbers?.phd_mobile_number,
-    };
-  
-    const degree = data.interestedDegree.toLowerCase();
-  
-      const yourWhatsAppNumber =
-      whatsappNumbers[degree];
+  // Program + Gender ke according WhatsApp number
+const whatsappNumbers: Record<string, string> = {
+  bachelors_male: mobileNumbers.BS_Number_Male,
+  bachelors_female: mobileNumbers.BS_Number_Female,
+
+  masters_male: mobileNumbers.MS_Number_Male,
+  masters_female: mobileNumbers.MS_Number_Female,
+
+  phd_male: mobileNumbers.PHD_Number_Male,
+  phd_female: mobileNumbers.PHD_Number_Female,
+};
+
+const degree = data.interestedDegree.toLowerCase();
+const selectedGender = data.gender.toLowerCase();
+
+const whatsappKey = `${degree}_${selectedGender}`;
+
+const yourWhatsAppNumber = whatsappNumbers[whatsappKey];
   
        if (!yourWhatsAppNumber) {
       alert("Please select a Interested degree.");
@@ -195,6 +214,40 @@ const ContactForm = () => {
                     {errors.fullName && (
                       <p className="mt-1 pl-2 text-xs text-red-500">
                         {errors.fullName.message}
+                      </p>
+                    )}
+                  </div>
+
+
+                   {/* Gender */}
+                  <div>
+                    <p className="mb-2 pl-2">
+                      Gender
+                      <span className="text-red-500">*</span>
+                    </p>
+
+                    <Selector
+                      value={gender}
+                      onChange={(value) =>
+                        setValue(
+                          "gender",
+                          value,
+                          {
+                            shouldValidate: true,
+                            shouldDirty: true,
+                          }
+                        )
+                      }
+                      placeholder="gender"
+                      options={[
+                        "male",
+                        "female",
+                      ]}
+                    />
+
+                    {errors.gender && (
+                      <p className="mt-1 pl-2 text-xs text-red-500">
+                        {errors.gender.message}
                       </p>
                     )}
                   </div>
