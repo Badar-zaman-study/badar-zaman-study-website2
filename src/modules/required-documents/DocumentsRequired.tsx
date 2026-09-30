@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -16,56 +17,67 @@ import {
 import Card from "@/src/components/cards/Card";
 import Heading from "@/src/components/Heading";
 import { FadeIn } from "@/src/components/motion/fade-in";
+import { useState } from "react";
+import RequiredDocumentSampleModel from "@/src/components/model/RequiredDocumentSampleModel";
 
 const documents = [
   {
+    document:"transcript",
     title: "Academic Transcripts",
     description: "Official transcripts of your previous education with grades.",
     icon: GraduationCap,
   },
   {
+    document:"Motivation_Letter",
     title: "Statement of Purpose (SOP)",
     description:
       "A well-written SOP explaining your goals, motivation and future plans.",
     icon: ClipboardSignature,
   },
   {
+    document:"Letter_of_Recommendation",
     title: "Letters of Recommendation (LORs)",
     description:
       "Usually 2–3 letters from professors or employers who know your potential.",
     icon: Award,
   },
   {
+    document:"Europass_cv",
     title: "Curriculum Vitae (CV/Resume)",
     description:
       "An updated CV highlighting your academic and professional background.",
     icon: FileText,
   },
   {
+    document:"passport",
     title: "Copy of Passport",
     description:
       "A clear copy of your valid passport (biographical page).",
     icon: IdCard,
   },
   {
+    document:"english_proficiency",
     title: "Language Proficiency Certificate / MOI",
     description:
       "IELTS, TOEFL or any other required language test score.",
     icon: FileBadge,
   },
 {
+  document:"",
   title: "Publications (if required)",
   description:
     "Published research papers, journal articles, or conference papers relevant to your academic field, if required by the program.",
   icon: BookOpen,
 },
   {
+    document:"research_proposal",
     title: "Research Proposal (if required)",
     description:
       "For research-based programs, a detailed research proposal is required.",
     icon: Lightbulb,
   },
   {
+    document:"",
     title: "Portfolio / Work Samples (if required)",
     description:
       "For certain fields like art, design, or architecture.",
@@ -74,7 +86,17 @@ const documents = [
 ];
 
 const DocumentsRequired = () => {
+
+  const [modelOpen , setModelOpen]=useState(false)
+  const [selectedDocument , setSelectedDocument]=useState('')
+
+
+  const handleModel = ({document=''}:any)=>{
+    setSelectedDocument(document)
+    setModelOpen(!modelOpen)
+  }
   return (
+    <>
     <section className="py-10">
       <div className="">
         <Heading 
@@ -85,9 +107,12 @@ const DocumentsRequired = () => {
 
         <Card className="">
        <div className="grid divide-y divide-slate-100 sm:grid-cols-2 md:divide-x md:divide-y-0 xl:grid-cols-3">
-        {documents?.map(({ title, description, icon: Icon }, index) => (
+        {documents?.map(({ title, description, icon: Icon , document }, index) => (
          <FadeIn key={title} delay={index * 0.12}>
-          <article className="flex items-start gap-3.5 px-5 py-7 sm:px-8 sm:py-8">
+          <article
+          onClick={()=>handleModel(document)}
+           className="flex items-start gap-3.5 cursor-pointer px-5 py-7 sm:px-8 sm:py-8"
+          >
            <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center text-blue-700">
             <Icon className="h-6 w-6" strokeWidth={1.75} />
            </span>
@@ -116,7 +141,14 @@ const DocumentsRequired = () => {
           </div>
         </Card>
       </div>
+
     </section>
+
+    {
+      modelOpen &&
+      <RequiredDocumentSampleModel isOpen={modelOpen} onClose={handleModel} documentName={selectedDocument}/>
+    }
+    </>
   );
 };
 
