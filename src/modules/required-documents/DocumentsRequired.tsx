@@ -22,7 +22,7 @@ import RequiredDocumentSampleModel from "@/src/components/model/RequiredDocument
 
 const documents = [
   {
-    document:"transcript",
+    document:"bs_Transcript",
     title: "Academic Transcripts",
     description: "Official transcripts of your previous education with grades.",
     icon: GraduationCap,
@@ -91,7 +91,7 @@ const DocumentsRequired = () => {
   const [selectedDocument , setSelectedDocument]=useState('')
 
 
-  const handleModel = ({document=''}:any)=>{
+  const handleModel = (document='')=>{
     setSelectedDocument(document)
     setModelOpen(!modelOpen)
   }
