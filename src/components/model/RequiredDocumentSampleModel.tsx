@@ -19,7 +19,8 @@ const documentFiles: Record<string, string> = {
 const RequiredDocumentSampleModel = ({
   isOpen,
   onClose,
-  documentName,
+  documentName='',
+  title='',
 }: any) => {
   const fileUrl = documentFiles[documentName];
 
@@ -34,7 +35,7 @@ const RequiredDocumentSampleModel = ({
       <div className="space-y-5">
 
         <h2 className="text-xl font-semibold text-slate-900">
-          Document Sample
+          Document Sample - {title}
         </h2>
 
         {fileUrl ? (
@@ -57,7 +58,12 @@ const RequiredDocumentSampleModel = ({
           </div>
         ) : (
           <div className="rounded-xl bg-slate-50 p-8 text-center">
-            <p className="text-sm text-slate-500">
+              <img
+                src="/empty.png"
+                alt="no file available"
+                className="mx-auto max-h-[30vh] w-auto max-w-full object-contain"
+              />
+            <p className="text-sm text-slate-500 font-bold">
               Sample document is not available.
             </p>
           </div>

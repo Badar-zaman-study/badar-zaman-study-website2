@@ -88,10 +88,12 @@ const documents = [
 const DocumentsRequired = () => {
 
   const [modelOpen , setModelOpen]=useState(false)
+  const [selectedDocumentTitle , setSelectedDocumentTitle]=useState('')
   const [selectedDocument , setSelectedDocument]=useState('')
 
 
-  const handleModel = (document='')=>{
+  const handleModel = (title='' , document='')=>{
+    setSelectedDocumentTitle(title)
     setSelectedDocument(document)
     setModelOpen(!modelOpen)
   }
@@ -110,7 +112,7 @@ const DocumentsRequired = () => {
         {documents?.map(({ title, description, icon: Icon , document }, index) => (
          <FadeIn key={title} delay={index * 0.12}>
           <article
-          onClick={()=>handleModel(document)}
+          onClick={()=>handleModel(title , document)}
            className="flex items-start gap-3.5 cursor-pointer px-5 py-7 sm:px-8 sm:py-8"
           >
            <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center text-blue-700">
@@ -146,7 +148,7 @@ const DocumentsRequired = () => {
 
     {
       modelOpen &&
-      <RequiredDocumentSampleModel isOpen={modelOpen} onClose={handleModel} documentName={selectedDocument}/>
+      <RequiredDocumentSampleModel isOpen={modelOpen} onClose={handleModel} documentName={selectedDocument} title={selectedDocumentTitle}/>
     }
     </>
   );
