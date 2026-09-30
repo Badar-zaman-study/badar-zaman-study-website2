@@ -34,7 +34,7 @@ const RequiredDocumentSampleModel = ({
     >
       <div className="space-y-5">
 
-        <h2 className="text-xl font-semibold text-slate-900">
+        <h2 className="text-base sm:text-xl font-semibold text-slate-900">
           Document Sample - {title}
         </h2>
 
