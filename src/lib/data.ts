@@ -43,7 +43,7 @@ export const navItems: NavItem[] = [
 
 export const stats = [
   { icon: Globe2, value: 150,  suffix: "K", label: "Students guided globally" },
-  { icon: Building2, value: 50,  suffix: "+", label: "Partner universities" },
+  { icon: Building2, value: 50,  suffix: "+", label: "Countries We Serve" },
   { icon: ShieldCheck, value: 96, suffix: "%", label: "Visa success support rate" },
   { icon: Award, value: 150, suffix: "", label: "Scholarships unlocked" }
 ];

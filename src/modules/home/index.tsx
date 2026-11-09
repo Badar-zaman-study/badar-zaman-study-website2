@@ -36,7 +36,7 @@ const index = () => {
       <PopularDestinations/>
       <WhyChooseUs/>
       <CurrentScholarships/>
-      <StudentSuccessStories/>
+      {/* <StudentSuccessStories/> */}
       <FAQ faqs={faqs}/>
     </div>
   )

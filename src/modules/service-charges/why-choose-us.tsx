@@ -42,7 +42,7 @@ export function WhyChooseUs() {
 
     <Heading
         icon={BadgeCheck}
-        title=" Why Choose BZS?"
+        title=" Why Choose BSA?"
       />
     
     <section className="rounded-2xl border border-blue-100 bg-white p-3 sm:p-6 shadow-sm">
