@@ -47,9 +47,9 @@ export function Hero() {
 
         <FadeIn delay={0.12}>
             <div className="relative overflow-hidden rounded-[34px] p-3">
-              <div className="relative h-[550px] lg:h-[520px] overflow-hidden rounded-[28px]">
+              <div className="relative h-[400px] lg:h-[520px] overflow-hidden rounded-[28px]">
                 <Image
-                  src="/badar-personal3.png"
+                  src="/badar-personal4.png"
                   // src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
                   alt="badar-personal image"
                   fill
