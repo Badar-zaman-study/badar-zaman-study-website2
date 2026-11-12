@@ -1,9 +1,15 @@
 import React from 'react'
+import { Hero } from './Hero'
+import OurSuccess from '../home/OurSuccess'
+import StudentsPortfolio from './StudentsPortfolio'
 
 const index = () => {
   return (
     <div>
-      <h1 className='text-4xl font-bold text-center mt-20'>Portfolio</h1>
+      <Hero/>
+      <OurSuccess/>
+      <StudentsPortfolio/>
+     
     </div>
   )
 }
