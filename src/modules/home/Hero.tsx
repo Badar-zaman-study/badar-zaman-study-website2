@@ -43,7 +43,7 @@ export function Hero() {
             </div>
            
           </div>
-        </FadeIn>
+        </FadeIn> 
 
         <FadeIn delay={0.12}>
             <div className="relative overflow-hidden rounded-[34px] p-3">
