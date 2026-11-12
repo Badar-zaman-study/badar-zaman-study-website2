@@ -4,6 +4,7 @@ import Heading from '@/src/components/Heading'
 import { BookOpenCheck } from 'lucide-react'
 import StudentPortfolioCard from './StudentPortfolioCard'
 import Pagination3 from '@/src/components/Pagination3'
+import NextSuccessStory from '@/src/components/NextSuccessStory';
 
 const StudentsPortfolio = () => {
 
@@ -29,6 +30,10 @@ const StudentsPortfolio = () => {
          paginationPages={paginationPages}
          handlePageChange={(page:number) => console.log(`Page changed to: ${page}`)}
         />
+    </div>
+
+    <div>
+        <NextSuccessStory/>
     </div>
 
      
