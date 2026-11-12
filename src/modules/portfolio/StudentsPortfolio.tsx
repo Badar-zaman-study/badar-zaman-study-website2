@@ -4,7 +4,6 @@ import Heading from '@/src/components/Heading'
 import { BookOpenCheck } from 'lucide-react'
 import StudentPortfolioCard from './StudentPortfolioCard'
 import Pagination3 from '@/src/components/Pagination3'
-import NextSuccessStory from '@/src/components/NextSuccessStory';
 
 const StudentsPortfolio = () => {
 
@@ -32,9 +31,7 @@ const StudentsPortfolio = () => {
         />
     </div>
 
-    <div>
-        <NextSuccessStory/>
-    </div>
+   
 
      
     </section>

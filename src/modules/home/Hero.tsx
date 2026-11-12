@@ -38,7 +38,7 @@ export function Hero() {
                             <Send size={18}/>
                           </button>
               <Link href="/service-charges" className="btn-secondary text-xs sm:text-base">
-                 Your Services <ChevronRight size={18}/>
+                 Our Services <ChevronRight size={18}/>
               </Link>
             </div>
            
