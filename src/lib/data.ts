@@ -35,7 +35,7 @@ export const navItems: NavItem[] = [
   { label: "Home", href: "/home" },
   { label: "Scholarships", href: "/scholarships" },
   { label: "Required Documents", href: "/required-documents" },
-  // { label: "Study Abroad Guide", href: "/study-abroad-guide" },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "Service & charges", href: "/service-charges" },
   // { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" }
