@@ -1,9 +1,13 @@
+"use client";
 import React from 'react'
 import Heading from '@/src/components/Heading'
 import { BookOpenCheck } from 'lucide-react'
 import StudentPortfolioCard from './StudentPortfolioCard'
+import Pagination3 from '@/src/components/Pagination3'
 
 const StudentsPortfolio = () => {
+
+    const paginationPages = [1, 2, 3, 4, 5];
   return (
    <section className="py-10">
     <div>
@@ -16,6 +20,15 @@ const StudentsPortfolio = () => {
 
     <div>
         <StudentPortfolioCard />
+    </div>
+
+    <div>
+        <Pagination3 
+         currentPage={1}
+         totalPages={10}
+         paginationPages={paginationPages}
+         handlePageChange={(page:number) => console.log(`Page changed to: ${page}`)}
+        />
     </div>
 
      

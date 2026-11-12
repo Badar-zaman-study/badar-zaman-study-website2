@@ -3,7 +3,7 @@
 
 import { AnyAaaaRecord } from "dns";
 
-export default function Pagination2({
+export default function Pagination3({
   currentPage,
   totalPages,
   paginationPages,
