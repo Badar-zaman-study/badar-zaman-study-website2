@@ -1,72 +1,133 @@
-
+"use client";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import { createClient } from "@/src/utils/supabase/client";
+import { toast } from "react-toastify";
 
-const students = [
-  {
-    name: "Ayesha Khan",
-    country: "UK",
-    university: "University of Manchester",
-    course: "MSc Data Science",
-    intake: "Sep 2026",
-    image: "/images/students/ayesha.jpg",
-  },
-  {
-    name: "Muhammad Ahmed",
-    country: "Canada",
-    university: "University of Toronto",
-    course: "MSc Computer Science",
-    intake: "Jan 2026",
-    image: "/images/students/ahmed.jpg",
-  },
-  {
-    name: "Fatima Noor",
-    country: "Australia",
-    university: "Monash University",
-    course: "Master of Business Analytics",
-    intake: "Feb 2026",
-    image: "/images/students/fatima.jpg",
-  },
-  {
-    name: "Ali Raza",
-    country: "Germany",
-    university: "Technical University of Munich",
-    course: "MSc Mechanical Engineering",
-    intake: "Oct 2025",
-    image: "/images/students/ali.jpg",
-  },
-  {
-    name: "Sara Malik",
-    country: "USA",
-    university: "New York University",
-    course: "MS Data Science",
-    intake: "Jan 2026",
-    image: "/images/students/sara.jpg",
-  },
-  {
-    name: "Usman Tariq",
-    country: "UK",
-    university: "University of Warwick",
-    course: "MSc Finance",
-    intake: "Sep 2026",
-    image: "/images/students/usman.jpg",
-  },
-];
+
+ 
+  
+ 
+  
+  
 
 export default function StudentPortfolioCard() {
+   const supabase = createClient();
+    const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [portfolios, setPortfolios] = useState<any[]>([]);
+    const [totalCount, setTotalCount] =useState(0);
+
+
+      const PAGE_SIZE = 20;
+
+     // =========================================
+     // FETCH SCHOLARSHIPS
+     // =========================================
+   
+     const fetchPortfolios = async () => {
+       try {
+         setLoading(true);
+   
+         const from =
+           (currentPage - 1) * PAGE_SIZE;
+   
+         const to =
+           from + PAGE_SIZE - 1;
+   
+         const today = new Date()
+           .toISOString()
+           .split("T")[0];
+   
+         let query = supabase
+           .from("portfolio")
+           .select("*", {
+             count: "exact",
+           });
+   
+   
+         // =========================================
+         // ORDER + PAGINATION
+         // =========================================
+   
+         query = query
+           .order(
+             "created_at",
+             {
+               ascending: false,
+             }
+           )
+           .range(from, to);
+   
+         const {
+           data,
+           error,
+           count,
+         } = await query;
+   
+         if (error) {
+           console.error(
+             "Supabase Error:",
+             error
+           );
+   
+           toast.error(error.message);
+   
+           setPortfolios([]);
+           setTotalCount(0);
+   
+           return;
+         }
+   
+         setPortfolios(
+           (data || []) as any[]
+         );
+   
+         setTotalCount(count || 0);
+   
+       } catch (error) {
+         console.error(
+           "Fetch Scholarships Error:",
+           error
+         );
+   
+         toast.error(
+           "Failed to fetch scholarships."
+         );
+   
+       } finally {
+         setLoading(false);
+       }
+     };
+
+
+      useEffect(() => {
+    fetchPortfolios();
+  }, [
+    currentPage,
+  ]);
+
+
+   const totalPages = Math.ceil(
+    totalCount / PAGE_SIZE
+  );
+
+
+  console.log(portfolios,'portfoliosss_portfoliosss')
   return (
     <section className="w-full">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
 
-        {students.map((student, index) => (
+        {portfolios?.map((student, index) => (
           <div
-            key={student.name}
+            key={student.student_name}
             className="group h-full flex min-w-0 items-center gap-3 overflow-hidden rounded-[28px] border border-slate-200 bg-white p-2.5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" >
             {/* Student Image */}
             <div className="relative h-[125px] w-[42%] shrink-0 overflow-hidden rounded-xl bg-slate-100 sm:w-[42%]">
               <Image
                 // src={student.image}
-                src="/portfolio1.png"
-                alt={student.name}
+                src={student.image_url}
+                alt={student.student_name}
                 fill
                 sizes="(max-width: 640px) 42vw, (max-width: 1280px) 21vw, 14vw"
                 className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
@@ -79,23 +140,23 @@ export default function StudentPortfolioCard() {
               {/* Country */}
               <div className="mb-1 flex items-center gap-1.5">
                 <span className="text-sm font-bold text-blue-700">
-                  {student.country}
+                  {student.country_name}
                 </span>
               </div>
 
               {/* Name */}
               <h3 className="truncate text-sm font-bold text-[#14264F] sm:text-[15px]">
-                {student.name}
+                {student.student_name}
               </h3>
 
               {/* University */}
               <p className="mt-1 text-xs leading-[1.4] text-slate-700">
-                {student.university}
+                {student.university_name}
               </p>
 
               {/* Course */}
               <p className="mt-0.5 text-xs leading-[1.4] text-slate-600">
-                {student.course}
+                {student.country_name}
               </p>
 
               {/* Intake */}
@@ -113,7 +174,7 @@ export default function StudentPortfolioCard() {
                   <rect x="3" y="5" width="18" height="16" rx="2" />
                   <path d="M16 3v4M8 3v4M3 11h18" />
                 </svg>
-                <span>Intake: {student.intake}</span>
+                <span>Intake: {student.admission_date}</span>
               </div>
 
               {/* Admission Badge */}
