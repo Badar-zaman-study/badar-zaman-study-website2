@@ -277,7 +277,7 @@ export default function StudentPortfolioCard() {
                     <div className="glass-panel p-8 relative overflow-hidden rounded-[28px] flex items-center justify-center">
       
                       <Image
-                        src="/no data found.webp"
+                        src="/empty.png"
                         alt="portfolios image"
                         height={1000}
                         width={1000}
