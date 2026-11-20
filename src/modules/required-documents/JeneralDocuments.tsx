@@ -30,18 +30,18 @@ const documents = [
   //     "Recent bank statement as proof of financial stability (if required).",
   //   icon: Landmark,
   // },
-  {
-    title: "Medical Certificate",
-    description:
-      "Health certificate from an authorized medical practitioner.",
-    icon: HeartPulse,
-  },
-  {
-    title: "Police Clearance Certificate",
-    description:
-      "Police clearance certificate for some countries and universities.",
-    icon: ShieldCheck,
-  },
+  // {
+  //   title: "Medical Certificate",
+  //   description:
+  //     "Health certificate from an authorized medical practitioner.",
+  //   icon: HeartPulse,
+  // },
+  // {
+  //   title: "Police Clearance Certificate",
+  //   description:
+  //     "Police clearance certificate for some countries and universities.",
+  //   icon: ShieldCheck,
+  // },
 ];
 
 const JeneralDocuments = () => {
@@ -52,7 +52,7 @@ const JeneralDocuments = () => {
         title="General Documents (Almost Always Required)"
       />
 
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 xl:gap-3">
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 xl:gap-3">
         {documents.map(({ title, description, icon: Icon }, index) => (
          <CardItem
            key={title}

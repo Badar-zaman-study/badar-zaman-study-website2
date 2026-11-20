@@ -10,9 +10,11 @@ import {
   FileBadge,
   FileText,
   GraduationCap,
+  HeartPulse,
   IdCard,
   Lightbulb,
   NotebookPen,
+  ShieldCheck,
 } from "lucide-react";
 import Card from "@/src/components/cards/Card";
 import Heading from "@/src/components/Heading";
@@ -62,13 +64,13 @@ const documents = [
       "IELTS, TOEFL or any other required language test score.",
     icon: FileBadge,
   },
-{
+  {
   document:"",
   title: "Publications (if required)",
   description:
     "Published research papers, journal articles, or conference papers relevant to your academic field, if required by the program.",
   icon: BookOpen,
-},
+  },
   {
     document:"research_proposal",
     title: "Research Proposal (if required)",
@@ -82,6 +84,18 @@ const documents = [
     description:
       "For certain fields like art, design, or architecture.",
     icon: BriefcaseBusiness,
+  },
+  {
+    document:"",
+    title: "Medical Certificate",
+    description:"Health certificate from an authorized medical practitioner.",
+    icon: HeartPulse,
+  },
+  {
+    document:"",
+    title: "Police Clearance Certificate",
+    description:"Police clearance certificate for some countries and universities.",
+    icon: ShieldCheck,
   },
 ];
 
