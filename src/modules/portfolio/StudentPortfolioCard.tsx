@@ -60,7 +60,7 @@ export default function StudentPortfolioCard() {
         {students.map((student, index) => (
           <div
             key={student.name}
-            className="group h-full flex min-w-0 items-center gap-3 overflow-hidden rounded-[28px] border border-slate-200 bg-white p-2.5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"          >
+            className="group h-full flex min-w-0 items-center gap-3 overflow-hidden rounded-[28px] border border-slate-200 bg-white p-2.5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl" >
             {/* Student Image */}
             <div className="relative h-[125px] w-[42%] shrink-0 overflow-hidden rounded-xl bg-slate-100 sm:w-[42%]">
               <Image
