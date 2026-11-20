@@ -5,7 +5,6 @@ const students = [
   {
     name: "Ayesha Khan",
     country: "UK",
-    flag: "🇬🇧",
     university: "University of Manchester",
     course: "MSc Data Science",
     intake: "Sep 2026",
@@ -14,7 +13,6 @@ const students = [
   {
     name: "Muhammad Ahmed",
     country: "Canada",
-    flag: "🇨🇦",
     university: "University of Toronto",
     course: "MSc Computer Science",
     intake: "Jan 2026",
@@ -23,7 +21,6 @@ const students = [
   {
     name: "Fatima Noor",
     country: "Australia",
-    flag: "🇦🇺",
     university: "Monash University",
     course: "Master of Business Analytics",
     intake: "Feb 2026",
@@ -32,7 +29,6 @@ const students = [
   {
     name: "Ali Raza",
     country: "Germany",
-    flag: "🇩🇪",
     university: "Technical University of Munich",
     course: "MSc Mechanical Engineering",
     intake: "Oct 2025",
@@ -41,7 +37,6 @@ const students = [
   {
     name: "Sara Malik",
     country: "USA",
-    flag: "🇺🇸",
     university: "New York University",
     course: "MS Data Science",
     intake: "Jan 2026",
@@ -50,7 +45,6 @@ const students = [
   {
     name: "Usman Tariq",
     country: "UK",
-    flag: "🇬🇧",
     university: "University of Warwick",
     course: "MSc Finance",
     intake: "Sep 2026",
@@ -84,9 +78,6 @@ export default function StudentPortfolioCard() {
 
               {/* Country */}
               <div className="mb-1 flex items-center gap-1.5">
-                <span className="text-lg leading-none">
-                  {student.flag}
-                </span>
                 <span className="text-sm font-bold text-blue-700">
                   {student.country}
                 </span>
