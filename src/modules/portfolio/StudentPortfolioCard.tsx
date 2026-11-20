@@ -156,7 +156,7 @@ export default function StudentPortfolioCard() {
 
               {/* Course */}
               <p className="mt-0.5 text-xs leading-[1.4] text-slate-600">
-                {student.country_name}
+                {student.degree_name}
               </p>
 
               {/* Intake */}
