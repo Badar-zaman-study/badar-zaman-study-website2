@@ -3,13 +3,9 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { createClient } from "@/src/utils/supabase/client";
 import { toast } from "react-toastify";
-
-
- 
-  
- 
-  
-  
+import Pagination3 from '@/src/components/Pagination3'
+import Loader from "@/src/components/Loader";
+import { FadeIn } from "@/src/components/motion/fade-in";
 
 export default function StudentPortfolioCard() {
    const supabase = createClient();
@@ -19,7 +15,7 @@ export default function StudentPortfolioCard() {
     const [totalCount, setTotalCount] =useState(0);
 
 
-      const PAGE_SIZE = 20;
+    const PAGE_SIZE = 20;
 
      // =========================================
      // FETCH SCHOLARSHIPS
@@ -101,21 +97,84 @@ export default function StudentPortfolioCard() {
      };
 
 
-      useEffect(() => {
+  useEffect(() => {
     fetchPortfolios();
   }, [
     currentPage,
   ]);
-
 
    const totalPages = Math.ceil(
     totalCount / PAGE_SIZE
   );
 
 
+   // =========================================
+  // PAGE CHANGE
+  // =========================================
+
+  const handlePageChange = (
+    page: number
+  ) => {
+    if (
+      page < 1 ||
+      page > totalPages
+    ) {
+      return;
+    }
+
+    setCurrentPage(page);
+
+    // Scroll back to portfolio section
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+    // =========================================
+  // PAGINATION ARRAY
+  // =========================================
+
+  const paginationPages = useMemo(() => {
+    const pages: number[] = [];
+
+    for (
+      let i = 1;
+      i <= totalPages;
+      i++
+    ) {
+      pages.push(i);
+    }
+
+    return pages;
+  }, [totalPages]);
+
+
+  
+
+
   console.log(portfolios,'portfoliosss_portfoliosss')
   return (
     <section className="w-full">
+
+     {/* =====================================
+          LOADING
+      ===================================== */}
+
+
+      {loading ? (
+
+        <div className="flex items-center justify-center">
+        <Loader size='large' color='blue'/>
+        </div>
+
+      ) : (
+
+        <>
+
+          {/* =====================================
+              Portfolio CARDS
+          ===================================== */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
 
         {portfolios?.map((student, index) => (
@@ -204,6 +263,155 @@ export default function StudentPortfolioCard() {
         ))}
 
       </div>
+
+
+
+               {/* =====================================
+                    EMPTY STATE
+                ===================================== */}
+      
+                {portfolios.length === 0 && (
+      
+                  <FadeIn delay={0.12}>
+      
+                    <div className="glass-panel p-8 relative overflow-hidden rounded-[28px] flex items-center justify-center">
+      
+                      <Image
+                        src="/no data found.webp"
+                        alt="portfolios image"
+                        height={1000}
+                        width={1000}
+                        className="object-contain w-[500px] h-[400px]"
+                      />
+      
+                    </div>
+      
+                  </FadeIn>
+      
+                )}
+
+
+        </>
+      )}
+
+
+         {/* =====================================
+              PAGINATION
+          ===================================== */}
+
+          {totalPages > 1 && (
+
+            <div className="flex items-center justify-center gap-2 pt-10">
+
+              {/* Previous */}
+
+              <button
+                type="button"
+                disabled={
+                  currentPage === 1
+                }
+                onClick={() =>
+                  handlePageChange(
+                    currentPage - 1
+                  )
+                }
+                className="
+                  h-9
+                  min-w-9
+                  rounded-md
+                  border
+                  border-[#dfe6f0]
+                  bg-white
+                  px-3
+                  text-sm
+                  text-[#526078]
+                  disabled:cursor-not-allowed
+                  disabled:opacity-40
+                  hover:bg-[#f5f8fc]
+                "
+              >
+                Previous
+              </button>
+
+              {/* Page Numbers */}
+
+              {paginationPages.map(
+                (page) => (
+
+                  <button
+                    key={page}
+                    type="button"
+                    onClick={() =>
+                      handlePageChange(
+                        page
+                      )
+                    }
+                    className={`
+                      h-9
+                      min-w-9
+                      rounded-md
+                      border
+                      px-3
+                      text-sm
+                      font-medium
+                      transition
+
+                      ${
+                        currentPage ===
+                        page
+                          ? "border-[#1554c7] bg-[#1554c7] text-white"
+                          : "border-[#dfe6f0] bg-white text-[#526078] hover:bg-[#f5f8fc]"
+                      }
+                    `}
+                  >
+                    {page}
+                  </button>
+
+                )
+              )}
+
+              {/* Next */}
+
+              <button
+                type="button"
+                disabled={
+                  currentPage ===
+                  totalPages
+                }
+                onClick={() =>
+                  handlePageChange(
+                    currentPage + 1
+                  )
+                }
+                className="
+                  h-9
+                  min-w-9
+                  rounded-md
+                  border
+                  border-[#dfe6f0]
+                  bg-white
+                  px-3
+                  text-sm
+                  text-[#526078]
+                  disabled:cursor-not-allowed
+                  disabled:opacity-40
+                  hover:bg-[#f5f8fc]
+                "
+              >
+                Next
+              </button>
+
+            </div>
+
+          )}
+        {/* <div>
+        <Pagination3 
+         currentPage={1}
+         totalPages={10}
+         paginationPages={paginationPages}
+         handlePageChange={(page:number) => console.log(`Page changed to: ${page}`)}
+        />
+    </div> */}
     </section>
   );
 }
